@@ -12,14 +12,14 @@ import com.dailyapps.expensecalc.R
 /**
  * A simple [Fragment] subclass.
  */
-class ExpenseViewFragment : Fragment() {
+class AddExpenseFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_expense_view, container, false)
+        return inflater.inflate(R.layout.fragment_add_expense, container, false)
     }
 
 
