@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.ExpenseViewFragment">
+
+	<TextView
+		android:id="@+id/tv_current_month"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		style="@style/Heading"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:layout_marginTop="@dimen/eds_dimen_5"
+		android:text="@string/tv_current_month"
+		tools:text="Expenses of October"/>
+
+	<LinearLayout
+		android:id="@+id/ll_current_expense_summary"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:orientation="vertical"
+		android:background="@color/bg_expense_summary"
+		android:padding="@dimen/eds_dimen_10"
+		android:layout_marginTop="@dimen/eds_dimen_10"
+		app:layout_constraintTop_toBottomOf="@+id/tv_current_month">
+
+		<TextView
+			android:id="@+id/tv_target_budget"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			style="@style/SubHeading"
+			android:text="@string/tv_target_budget"
+			tools:text="Target Budget: Rs.20000"/>
+
+		<TextView
+			android:id="@+id/tv_total_expense"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			style="@style/SubHeading"
+			android:layout_marginTop="@dimen/eds_dimen_5"
+			android:text="@string/tv_total_expense"
+			tools:text="Total Expense: Rs.15000"/>
+
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/tv_no_expenses_info"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/ll_current_expense_summary"
+		android:layout_marginTop="@dimen/eds_dimen_10"
+		android:text="@string/tv_no_expenses_info"
+		android:visibility="gone"
+		tools:visibility="visible"
+		style="@style/Info"/>
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/rv_expenses_list"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_marginTop="@dimen/eds_dimen_10"
+		app:layout_constraintTop_toBottomOf="@+id/ll_current_expense_summary"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		tools:listitem="@layout/item_expense"
+		app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

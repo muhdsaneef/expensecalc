@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Expenses</string>
+	<string name="app_name">Expenses</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="tv_current_month">Expenses of %1s</string>
+	<string name="tv_target_budget">Target Budget: %1s</string>
+	<string name="tv_total_expense">Total Expense: %1s</string>
+	<string name="tv_no_expenses_info">No expenses yet!</string>
 </resources>

@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+	<style name="SubHeading">
+        <item name="android:textSize">@dimen/eds_textsize_16</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ItemDescription">
+        <item name="android:textSize">@dimen/eds_textsize_14</item>
+        <item name="android:textColor">@color/descriptionColor</item>
+    </style>
+
+    <style name="Heading">
+        <item name="android:textSize">@dimen/eds_textsize_18</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Info">
+        <item name="android:textSize">@dimen/eds_textsize_18</item>
+        <item name="android:textColor">@color/infoColor</item>
+    </style>
+
+
 </resources>
