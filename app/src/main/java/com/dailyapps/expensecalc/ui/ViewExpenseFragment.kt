@@ -13,7 +13,6 @@ import com.dailyapps.expensecalc.R
  * A simple [Fragment] subclass.
  */
 class ViewExpenseFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,5 +21,8 @@ class ViewExpenseFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_view_expense, container, false)
     }
 
+    companion object {
+        fun newInstance() = ViewExpenseFragment()
+    }
 
 }
