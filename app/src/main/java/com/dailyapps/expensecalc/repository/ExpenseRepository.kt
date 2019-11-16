@@ -1,10 +1,14 @@
 package com.dailyapps.expensecalc.repository
 
-import com.dailyapps.expensecalc.dao.ExpenseDao
+import android.content.Context
+import com.dailyapps.expensecalc.database.ExpenseDatabase
 import com.dailyapps.expensecalc.model.Expense
 
-class ExpenseRepository(private val expenseDao: ExpenseDao) {
-    val allNotes = expenseDao.getExpenseByMonth()
+class ExpenseRepository(context: Context) {
+
+    private val expenseDao = ExpenseDatabase.getExpenseDatabase(context).getExpenseDao()
+
+    val allExpenses = expenseDao.getExpenseByMonth()
 
     fun insert(expense: Expense) {
         expenseDao.insert(expense)

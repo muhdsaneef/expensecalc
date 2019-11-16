@@ -17,7 +17,8 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		android:layout_marginTop="@dimen/eds_dimen_5"
 		android:text="@string/tv_current_month"
-		tools:text="Expenses of October"/>
+		tools:text="Expenses of October"
+		/>
 
 	<LinearLayout
 		android:id="@+id/ll_current_expense_summary"
@@ -27,7 +28,8 @@
 		android:background="@color/bg_expense_summary"
 		android:padding="@dimen/eds_dimen_10"
 		android:layout_marginTop="@dimen/eds_dimen_10"
-		app:layout_constraintTop_toBottomOf="@+id/tv_current_month">
+		app:layout_constraintTop_toBottomOf="@+id/tv_current_month"
+		>
 
 		<TextView
 			android:id="@+id/tv_target_budget"
@@ -35,7 +37,8 @@
 			android:layout_height="wrap_content"
 			style="@style/SubHeading"
 			android:text="@string/tv_target_budget"
-			tools:text="Target Budget: Rs.20000"/>
+			tools:text="Target Budget: Rs.20000"
+			/>
 
 		<TextView
 			android:id="@+id/tv_total_expense"
@@ -44,7 +47,8 @@
 			style="@style/SubHeading"
 			android:layout_marginTop="@dimen/eds_dimen_5"
 			android:text="@string/tv_total_expense"
-			tools:text="Total Expense: Rs.15000"/>
+			tools:text="Total Expense: Rs.15000"
+			/>
 
 	</LinearLayout>
 
@@ -59,7 +63,8 @@
 		android:text="@string/tv_no_expenses_info"
 		android:visibility="gone"
 		tools:visibility="visible"
-		style="@style/Info"/>
+		style="@style/Info"
+		/>
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/rv_expenses_list"
@@ -69,6 +74,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/ll_current_expense_summary"
 		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 		tools:listitem="@layout/item_expense"
-		app:layout_constraintBottom_toBottomOf="parent"/>
+		app:layout_constraintBottom_toBottomOf="parent"
+		/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

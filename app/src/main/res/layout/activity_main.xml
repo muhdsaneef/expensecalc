@@ -19,5 +19,16 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			/>
 
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/btn_add_expense"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout_marginEnd="@dimen/eds_dimen_10"
+			android:layout_marginBottom="@dimen/eds_dimen_10"
+			android:src="@drawable/ic_expense_button_add"
+			/>
+
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
