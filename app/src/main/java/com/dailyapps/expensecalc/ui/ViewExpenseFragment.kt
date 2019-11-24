@@ -43,11 +43,21 @@ class ViewExpenseFragment : Fragment() {
     private fun initExpensesAdapter() {
         adapter = ExpensesAdapter()
         rv_expenses_list.adapter = adapter
+
+
     }
 
     private fun setObserverExpensesListChanges() {
         viewModel.allExpense.observe(this, Observer{expenseList ->
             adapter.setExpenses(expenseList)
+        })
+
+        viewModel.selectedDate.observe(this, Observer {
+            tv_current_date.text = it
+        })
+
+        viewModel.selectedMonth.observe(this, Observer {
+            tv_current_month.text = getString(R.string.tv_current_month, it)
         })
     }
 

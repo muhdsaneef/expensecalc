@@ -8,16 +8,24 @@ import com.dailyapps.expensecalc.database.DatabaseWorker
 import com.dailyapps.expensecalc.database.ExpenseDatabase
 import com.dailyapps.expensecalc.model.Expense
 import com.dailyapps.expensecalc.repository.ExpenseRepository
+import com.dailyapps.expensecalc.util.DateUtils
+import java.util.*
 
 class ExpenseViewModel : ViewModel() {
 
     private lateinit var repository: ExpenseRepository
     lateinit var allExpense: LiveData<List<Expense>>
-    val selectedMonth: LiveData<String> = MutableLiveData()
+    var selectedDate: MutableLiveData<String> = MutableLiveData()
+    val selectedMonth: MutableLiveData<String> = MutableLiveData()
+    var numberOfExpenseEntries: MutableLiveData<Int> = MutableLiveData()
+    private lateinit var calendar: Calendar
+    private var selectedPosition = -1
 
     fun init(context: Context) {
         repository = ExpenseRepository(context)
-        allExpense = repository.allExpenses
+        calendar = Calendar.getInstance()
+        allExpense = repository.getExpensesByDay(calendar.time)
+        numberOfExpenseEntries.value = 4
     }
 
     fun addExpense(expense: Expense) {
@@ -29,7 +37,27 @@ class ExpenseViewModel : ViewModel() {
         databaseOperation.execute()
     }
 
-    fun onDateChanged() {
+    fun onSelectedDayChanged(position: Int) {
+        selectedPosition = when (selectedPosition) {
+            -1 -> position
+            else -> {
+                calendar.add(Calendar.DAY_OF_WEEK, (position - selectedPosition))
+                position
+            }
+        }
+        setCurrentMonth()
+        setCurrentDate()
+    }
 
+    private fun setCurrentDate() {
+        calendar?.let {
+            selectedDate.value = DateUtils.getDateTextFromTimestamp(it.timeInMillis)
+        }
+    }
+
+    private fun setCurrentMonth() {
+        calendar?.let {
+            selectedMonth.value = DateUtils.getMonthTextFromTimestamp(it.timeInMillis)
+        }
     }
 }

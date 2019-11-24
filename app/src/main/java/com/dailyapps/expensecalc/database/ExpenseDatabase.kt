@@ -1,9 +1,7 @@
 package com.dailyapps.expensecalc.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.dailyapps.expensecalc.dao.ExpenseDao
 import com.dailyapps.expensecalc.model.Expense
@@ -11,6 +9,7 @@ import java.util.*
 import java.util.concurrent.Executors
 
 @Database(entities = [Expense::class], version = 1)
+@TypeConverters(DateConverter::class)
 abstract class ExpenseDatabase: RoomDatabase() {
     abstract fun getExpenseDao(): ExpenseDao
 

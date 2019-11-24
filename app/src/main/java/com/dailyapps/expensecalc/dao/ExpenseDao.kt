@@ -8,7 +8,11 @@ import com.dailyapps.expensecalc.model.Expense
 interface ExpenseDao {
 
     @Query("SELECT * from expense_table ORDER BY created_at DESC")
-    fun getExpenseByMonth(): LiveData<List<Expense>>
+    fun getAllExpenses(): LiveData<List<Expense>>
+
+    @Query("SELECT * from expense_table WHERE created_at BETWEEN :dayStartTime " +
+            "AND :dayEndTime ORDER BY created_at DESC")
+    fun getExpensesByDay(dayStartTime: Long, dayEndTime: Long): LiveData<List<Expense>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(expense: Expense)
