@@ -4,14 +4,14 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.dailyapps.expensecalc.dao.ExpenseDao
 import com.dailyapps.expensecalc.database.ExpenseDatabase
 import com.dailyapps.expensecalc.model.Expense
 import com.dailyapps.expensecalc.util.DateUtils
 import java.util.*
+import javax.inject.Inject
 
-class ExpenseRepository(context: Context) {
-
-    private val expenseDao = ExpenseDatabase.getExpenseDatabase(context).getExpenseDao()
+class ExpenseRepository @Inject constructor(val expenseDao: ExpenseDao) {
 
     val allExpenses = expenseDao.getAllExpenses()
 

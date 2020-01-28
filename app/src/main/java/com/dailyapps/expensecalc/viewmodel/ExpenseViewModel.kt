@@ -10,10 +10,10 @@ import com.dailyapps.expensecalc.model.Expense
 import com.dailyapps.expensecalc.repository.ExpenseRepository
 import com.dailyapps.expensecalc.util.DateUtils
 import java.util.*
+import javax.inject.Inject
 
-class ExpenseViewModel : ViewModel() {
+class ExpenseViewModel @Inject constructor(val repository: ExpenseRepository) : ViewModel() {
 
-    private lateinit var repository: ExpenseRepository
     lateinit var allExpense: LiveData<List<Expense>>
     var selectedDate: MutableLiveData<String> = MutableLiveData()
     val selectedMonth: MutableLiveData<String> = MutableLiveData()
@@ -21,8 +21,7 @@ class ExpenseViewModel : ViewModel() {
     private lateinit var calendar: Calendar
     private var selectedPosition = -1
 
-    fun init(context: Context) {
-        repository = ExpenseRepository(context)
+    fun init() {
         calendar = Calendar.getInstance()
         allExpense = repository.getExpensesByDay(calendar.time)
         numberOfExpenseEntries.value = 4

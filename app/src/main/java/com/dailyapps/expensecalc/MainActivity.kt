@@ -3,6 +3,7 @@ package com.dailyapps.expensecalc
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -10,19 +11,25 @@ import com.dailyapps.expensecalc.adapters.ExpenseViewAdapter
 import com.dailyapps.expensecalc.databinding.ActivityMainBinding
 import com.dailyapps.expensecalc.model.Expense
 import com.dailyapps.expensecalc.viewmodel.ExpenseViewModel
+import com.dailyapps.expensecalc.viewmodel.ViewModelProviderFactory
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    @Inject
+    lateinit var factory: ViewModelProviderFactory
+
     private lateinit var viewModel: ExpenseViewModel
     private lateinit var adapter: ExpenseViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        AndroidInjection.inject(this)
         initExpenseViewAdapter()
         initViewModel()
         setExpensesView()
@@ -48,8 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(ExpenseViewModel::class.java)
-        viewModel.init(this)
+        viewModel = ViewModelProviders.of(this, factory).get(ExpenseViewModel::class.java)
+        viewModel.init()
     }
 
     private fun initAddExpense() {
