@@ -32,6 +32,10 @@ class ExpenseRepository(context: Context) {
         return expenseDao.getExpensesByDay(dayStartAndEnd.first, dayStartAndEnd.second)
     }
 
+    fun getNumberOfEntriesInGivenMonth(monthStartDate: Long, monthEndDate: Long): LiveData<Int> {
+        return expenseDao.getNumberOfEntriesInGivenMonth(monthStartDate, monthEndDate)
+    }
+
     fun insert(expense: Expense) {
         expenseDao.insert(expense)
     }

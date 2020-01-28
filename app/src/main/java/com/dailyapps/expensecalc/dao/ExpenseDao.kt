@@ -19,4 +19,8 @@ interface ExpenseDao {
 
     @Update
     fun update(expense: Expense)
+
+    @Query("SELECT COUNT(*) from expense_table WHERE created_at BETWEEN :monthStartDate " +
+            "AND :monthEndDate ORDER BY created_at DESC")
+    fun getNumberOfEntriesInGivenMonth(monthStartDate: Long, monthEndDate: Long): LiveData<Int>
 }
