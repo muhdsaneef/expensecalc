@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this, factory).get(ExpenseViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(ExpenseViewModel::class.java)
         viewModel.init()
     }
 
